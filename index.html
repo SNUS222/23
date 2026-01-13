@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Черный сайт с кнопками</title>
+    <!-- Подключаем MathJax для красивых формул -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        /* Основные настройки страницы */
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        /* Контейнер для кнопок (Вертикальный список) */
+        .buttons-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            padding: 20px;
+            width: 100%; 
+            max-width: 300px;
+        }
+
+        /* Стили кнопок */
+        .number-btn {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            border-radius: 10px;
+            padding: 15px 30px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .number-btn:hover {
+            background-color: #ffffff;
+            color: #000000;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .number-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Блок для сообщений */
+        #message-box {
+            margin-top: 20px;
+            height: 30px;
+            font-size: 18px;
+            color: #888;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* --- Стили для модального окна (Всплывашка с формулами) --- */
+        .modal-overlay {
+            display: none; /* Скрыто по умолчанию */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95); /* Почти черный фон */
+            z-index: 1000;
+            justify-content: center;
+            align-items: flex-start;
+            overflow-y: auto; /* Прокрутка, если формул много */
+            padding: 20px 0;
+        }
+
+        .modal-content {
+            background-color: #111;
+            border: 1px solid #444;
+            border-radius: 10px;
+            padding: 40px;
+            max-width: 800px;
+            width: 90%;
+            color: #eee;
+            position: relative;
+            box-shadow: 0 0 20px rgba(255,255,255,0.1);
+        }
+
+        /* Кнопка закрытия модального окна */
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #888;
+            transition: 0.3s;
+        }
+        .close-btn:hover {
+            color: #fff;
+        }
+
+        /* Стили внутри текста с формулами */
+        .math-section {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+        }
+        .math-section h3 {
+            color: #4da6ff; /* Голубой заголовок */
+            margin-bottom: 15px;
+        }
+        .math-text {
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        .math-block {
+            margin: 10px 0;
+            padding: 10px;
+            background: #1a1a1a;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="message-box">Нажми на кнопку</div>
+    <div class="buttons-container" id="grid"></div>
+
+    <!-- Модальное окно для формул -->
+    <div id="mathModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div id="mathContent">
+                <!-- Сюда вставится текст -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Список цифр
+        const numbers = [2, 23, 22, 11, 15, 16, 14, 25, 17, 20, 19, 18, 13, 9];
+        const gridContainer = document.getElementById('grid');
+        const messageBox = document.getElementById('message-box');
+        const modal = document.getElementById('mathModal');
+        const mathContent = document.getElementById('mathContent');
+
+        // Контент для кнопки 2 (обновленный текст пользователя)
+        const contentFor2 = `
+            <div class="math-section">
+                <h3>1. Числовые ряды. Сумма ряда. Признаки сходимости</h3>
+                <div class="math-text">
+                    Пусть дана последовательность \\(\\{a_n\\}\\).<br>
+                    Ряд
+                    \\[ \\sum_{n=1}^{\\infty} a_n \\]
+                    называется числовым рядом.<br>
+                    Частичной суммой ряда называется число
+                    \\[ S_n=\\sum_{k=1}^{n} a_k. \\]
+                    Если существует конечный предел
+                    \\[ \\lim_{n\\to\\infty} S_n=S, \\]
+                    то ряд называется сходящимся, а число \\(S\\) — суммой ряда.<br><br>
+                    Если предел не существует или равен бесконечности, ряд называется расходящимся.<br>
+                    <br>
+                    <strong>Признаки сходимости</strong><br>
+                    <strong>Необходимое условие сходимости:</strong>
+                    \\[ \\lim_{n\\to\\infty} a_n=0. \\]
+                    <strong>Признак сравнения.</strong><br>
+                    Пусть \\(0\\le a_n\\le b_n\\).<br>
+                    Если ряд \\(\\sum b_n\\) сходится, то сходится и ряд \\(\\sum a_n\\).<br>
+                    Если ряд \\(\\sum a_n\\) расходится, то расходится и ряд \\(\\sum b_n\\).<br>
+                    <br>
+                    <strong>Предельный признак сравнения.</strong><br>
+                    Если
+                    \\[ \\lim_{n\\to\\infty}\\frac{a_n}{b_n}=c,\\quad 0<c<\\infty, \\]
+                    то ряды \\(\\sum a_n\\) и \\(\\sum b_n\\) сходятся или расходятся одновременно.<br>
+                    <br>
+                    <strong>Признак Даламбера.</strong>
+                    \\[ \\lim_{n\\to\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|=q \\]
+                    \\[ \\begin{cases} q<1 & \\text{ряд сходится},\\\\ q>1 & \\text{ряд расходится}. \\end{cases} \\]
+                    <strong>Признак Коши.</strong>
+                    \\[ \\lim_{n\\to\\infty}\\sqrt[n]{|a_n|}=q \\]
+                    \\[ \\begin{cases} q<1 & \\text{ряд сходится},\\\\ q>1 & \\text{ряд расходится}. \\end{cases} \\]
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>2. Предел последовательности в пространстве \\(\\mathbb{R}^n\\)</h3>
+                <div class="math-text">
+                    Пусть
+                    \\[ x^{(k)}=(x_1^{(k)},x_2^{(k)},\\dots,x_n^{(k)})\\in\\mathbb{R}^n. \\]
+                    Последовательность \\(\\{x^{(k)}\\}\\) называется сходящейся к точке
+                    \\(a=(a_1,a_2,\\dots,a_n)\\), если
+                    \\[ \\forall \\varepsilon>0\\ \\exists N:\\ \\forall k>N \\quad \\rho(x^{(k)},a)<\\varepsilon, \\]
+                    где
+                    \\[ \\rho(x,y)=\\sqrt{\\sum_{i=1}^{n}(x_i-y_i)^2}. \\]
+                    <strong>Обозначение:</strong>
+                    \\[ \\lim_{k\\to\\infty} x^{(k)}=a. \\]
+                    Последовательность сходится в \\(\\mathbb{R}^n\\) тогда и только тогда, когда
+                    \\[ \\lim_{k\\to\\infty} x_i^{(k)}=a_i,\\quad i=1,\\dots,n. \\]
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>3. Найти экстремум функции</h3>
+                <div class="math-text">
+                    \\[ z=x^2-xy+y^2 \\]
+                    \\[ z_x=2x-y,\\quad z_y=-x+2y \\]
+                    \\[ \\begin{cases} 2x-y=0,\\\\ -x+2y=0 \\end{cases} \\Rightarrow \\begin{cases} y=2x,\\\\ 3x=0 \\end{cases} \\Rightarrow x=0,\\ y=0 \\]
+                    \\[ z_{xx}=2,\\quad z_{yy}=2,\\quad z_{xy}=-1 \\]
+                    \\[ D=z_{xx}z_{yy}-z_{xy}^2=4-1=3>0 \\]
+                    \\[ z_{xx}>0 \\]
+                    \\[ z_{\\min}=0 \\quad \\text{в точке } (0,0) \\]
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>4. Вычислить несобственный интеграл</h3>
+                <div class="math-text">
+                    \\[ \\int_{-1}^{1}\\frac{dx}{\\sqrt{3-x^2}} \\]
+                    \\[ \\int\\frac{dx}{\\sqrt{a^2-x^2}}=\\arcsin\\frac{x}{a} \\]
+                    \\[ =\\arcsin\\frac{x}{\\sqrt3}\\Big|_{-1}^{1} \\]
+                    \\[ =\\arcsin\\frac{1}{\\sqrt3}-\\arcsin\\left(-\\frac{1}{\\sqrt3}\\right) \\]
+                    \\[ =2\\arcsin\\frac{1}{\\sqrt3} \\]
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>5. Найти радиус сходимости</h3>
+                <div class="math-text">
+                    \\[ \\sum_{n=1}^{\\infty}\\frac{x^n}{n(n+1)} \\]
+                    \\[ a_n=\\frac{x^n}{n(n+1)} \\]
+                    \\[ \\lim_{n\\to\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right| =\\lim_{n\\to\\infty}|x|\\frac{n(n+1)}{(n+1)(n+2)} =|x| \\]
+                    \\[ |x|<1 \\]
+                    \\[ R=1 \\]
+                </div>
+            </div>
+        `;
+
+        numbers.forEach(num => {
+            const button = document.createElement('button');
+            button.className = 'number-btn';
+            button.textContent = num;
+
+            button.onclick = () => {
+                if (num === 2) {
+                    // Если нажали 2 - открываем модальное окно с математикой
+                    mathContent.innerHTML = contentFor2;
+                    modal.style.display = 'flex';
+                    // Просим MathJax перерисовать формулы
+                    if (window.MathJax) {
+                        MathJax.typesetPromise();
+                    }
+                    messageBox.textContent = "Открыта теория";
+                } else {
+                    // Стандартное поведение для остальных кнопок
+                    messageBox.textContent = `Вы выбрали число: ${num}`;
+                    messageBox.style.color = 'white';
+                    setTimeout(() => {
+                        messageBox.style.color = '#888';
+                    }, 1000);
+                }
+            };
+            gridContainer.appendChild(button);
+        });
+
+        // Функция закрытия окна
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        // Закрытие при клике вне окна
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
