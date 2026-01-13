@@ -156,7 +156,9 @@
         const modal = document.getElementById('mathModal');
         const mathContent = document.getElementById('mathContent');
 
-        // Контент для кнопки 2 (обновленный текст пользователя)
+        // --- КОНТЕНТ ДЛЯ БИЛЕТОВ ---
+
+        // Билет 2
         const contentFor2 = `
             <div class="math-section">
                 <h3>1. Числовые ряды. Сумма ряда. Признаки сходимости</h3>
@@ -247,23 +249,671 @@
             </div>
         `;
 
+        // Билет 11
+        const contentFor11 = `
+            <div class="math-section">
+                <h3>1. Дифференциал высшего порядка функции многих переменных</h3>
+                <div class="math-text">
+                    Пусть функция \\(f(x_1,x_2,\\dots,x_n)\\) имеет непрерывные частные производные до порядка \\(k\\) включительно.<br>
+                    <strong>Дифференциал первого порядка:</strong>
+                    \\[ df=\\sum_{i=1}^{n}\\frac{\\partial f}{\\partial x_i}dx_i. \\]
+                    <strong>Дифференциал второго порядка:</strong>
+                    \\[ d^2f=\\sum_{i=1}^{n}\\sum_{j=1}^{n}\\frac{\\partial^2 f}{\\partial x_i\\partial x_j}dx_i\\,dx_j. \\]
+                    <strong>Дифференциал порядка \\(k\\):</strong>
+                    \\[ d^kf=\\sum_{i_1=1}^{n}\\dots\\sum_{i_k=1}^{n}\\frac{\\partial^k f}{\\partial x_{i_1}\\dots\\partial x_{i_k}}dx_{i_1}\\dots dx_{i_k}. \\]
+                    Если все частные производные порядка \\(k\\) непрерывны, то дифференциал порядка \\(k\\) не зависит от порядка дифференцирования.
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>2. Равномерная непрерывность функций многих переменных. Теорема Кантора</h3>
+                <div class="math-text">
+                    Функция \\(f:D\\subset\\mathbb{R}^n\\to\\mathbb{R}\\) называется равномерно непрерывной на \\(D\\), если
+                    \\[ \\forall\\varepsilon>0\\ \\exists\\delta>0:\\ \\forall x,y\\in D,\\ \\rho(x,y)<\\delta \\Rightarrow |f(x)-f(y)|<\\varepsilon. \\]
+                    <strong>Теорема Кантора</strong><br>
+                    Если функция \\(f(x)\\) непрерывна на компакте \\(K\\subset\\mathbb{R}^n\\), то она равномерно непрерывна на \\(K\\).
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>3. Найти экстремум функции</h3>
+                <div class="math-text">
+                    \\[ z=x^2-2xy+3y-1 \\]
+                    \\[ z_x=2x-2y,\\quad z_y=-2x+3 \\]
+                    \\[ \\begin{cases} 2x-2y=0\\\\ -2x+3=0 \\end{cases} \\Rightarrow \\begin{cases} x=\\frac{3}{2}\\\\ y=\\frac{3}{2} \\end{cases} \\]
+                    \\[ z_{xx}=2,\\quad z_{yy}=0,\\quad z_{xy}=-2 \\]
+                    \\[ D=z_{xx}z_{yy}-z_{xy}^2=-4<0 \\]
+                    \\[ \\boxed{\\text{Экстремума нет}} \\]
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>4. Вычислить несобственный интеграл второго рода</h3>
+                <div class="math-text">
+                    \\[ \\int_{0}^{1}\\frac{dx}{x\\ln^2 x} \\]
+                    \\[ t=\\ln x,\\quad dt=\\frac{dx}{x} \\]
+                    \\[ \\int \\frac{dt}{t^2} = -\\frac{1}{t} = -\\frac{1}{\\ln x}\\Big|_{0}^{1} \\]
+                    \\[ = \\lim_{\\varepsilon\\to 0+} \\left( -\\frac{1}{\\ln 1} +\\frac{1}{\\ln \\varepsilon} \\right) = +\\infty \\]
+                    \\[ \\boxed{\\text{Интеграл расходится}} \\]
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>5. Найти радиус сходимости</h3>
+                <div class="math-text">
+                    \\[ \\sum_{n=1}^{\\infty}\\frac{n\\,x^n}{(2n-1)!} \\]
+                    \\[ a_n=\\frac{n\\,x^n}{(2n-1)!} \\]
+                    \\[ \\lim_{n\\to\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right| = \\lim_{n\\to\\infty} |x|\\frac{n+1}{n}\\frac{(2n-1)!}{(2n+1)!} \\]
+                    \\[ = \\lim_{n\\to\\infty} |x|\\frac{n+1}{n(2n)(2n+1)} = 0 \\]
+                    \\[ R=+\\infty \\]
+                </div>
+            </div>
+        `;
+
+        // Билет 14
+        const contentFor14 = `
+            <div class="math-section">
+                <h3>1. Непрерывность функций многих переменных. Свойства</h3>
+                <div class="math-text">
+                    Пусть функция \\( f:D\\subset\\mathbb{R}^n\\to\\mathbb{R} \\).<br>
+                    Функция \\( f(x) \\) называется непрерывной в точке \\( x_0\\in D \\), если
+                    \\[ \\lim_{x\\to x_0} f(x)=f(x_0). \\]
+                    Функция называется непрерывной на множестве \\( D \\), если она непрерывна в каждой точке множества \\( D \\).<br>
+                    <br>
+                    <strong>Свойства</strong><br>
+                    Если функции \\( f(x), g(x) \\) непрерывны в точке \\( x_0 \\), то:
+                    <ul>
+                        <li>\\( f(x)\\pm g(x),\\quad f(x)\\cdot g(x) \\) непрерывны в точке \\( x_0 \\);</li>
+                        <li>\\( \\frac{f(x)}{g(x)} \\) непрерывна в точке \\( x_0 \\), если \\( g(x_0)\\ne 0 \\).</li>
+                    </ul>
+                    Если \\( f(x) \\) непрерывна в точке \\( x_0 \\) и \\( \\varphi(t) \\) непрерывна в точке \\( t_0=f(x_0) \\), то \\( \\varphi(f(x)) \\) непрерывна в точке \\( x_0 \\).
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>2. Равномерная сходимость последовательностей и рядов. Критерий Коши</h3>
+                <div class="math-text">
+                    Функциональная последовательность \\( \\{u_n(x)\\} \\) называется <strong>равномерно сходящейся</strong> к функции \\( u(x) \\) на множестве \\( E \\), если
+                    \\[ \\sup_{x\\in E}|u_n(x)-u(x)|\\xrightarrow[n\\to\\infty]{}0. \\]
+                    Функциональный ряд \\( \\sum u_n(x) \\) называется <strong>равномерно сходящимся</strong> на \\( E \\), если
+                    \\[ \\sup_{x\\in E}|S_n(x)-S(x)|\\xrightarrow[n\\to\\infty]{}0. \\]
+                    <br>
+                    <strong>Критерий Коши</strong><br>
+                    Функциональный ряд \\( \\sum u_n(x) \\) равномерно сходится на \\( E \\) тогда и только тогда, когда
+                    \\[ \\forall\\varepsilon>0\\ \\exists N:\\ \\forall m>n>N \\Rightarrow \\sup_{x\\in E}\\left|\\sum_{k=n+1}^{m}u_k(x)\\right|<\\varepsilon. \\]
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>3. Вычислить интеграл</h3>
+                <div class="math-text">
+                    \\[ \\int_{\\sqrt2}^{+\\infty}\\frac{x\\,dx}{(\\sqrt{1+x^2})^{3}} \\]
+                    \\[ (\\sqrt{1+x^2})^{3}=(1+x^2)^{3/2} \\]
+                    \\[ t=1+x^2,\\quad dt=2x\\,dx \\]
+                    \\[ = \\frac12\\int t^{-3/2}\\,dt = \\frac12\\cdot\\frac{t^{-1/2}}{-1/2} = -t^{-1/2} \\]
+                    \\[ = -\\frac{1}{\\sqrt{1+x^2}}\\Big|_{\\sqrt2}^{+\\infty} \\]
+                    \\[ = \\lim_{A\\to+\\infty} \\left( -\\frac{1}{\\sqrt{1+A^2}}+\\frac{1}{\\sqrt3} \\right) = \\frac{1}{\\sqrt3} \\]
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>4. Разложить в ряд</h3>
+                <div class="math-text">
+                    \\[ f(x,y)=\\frac{1}{x+y},\\quad x_0=1,\\ y_0=1 \\]
+                    \\[ x+y=2+(x-1)+(y-1) \\]
+                    \\[ \\frac{1}{x+y} = \\frac{1}{2\\left(1+\\frac{(x-1)+(y-1)}{2}\\right)} \\]
+                    \\[ = \\frac12\\sum_{n=0}^{\\infty}(-1)^n \\left(\\frac{(x-1)+(y-1)}{2}\\right)^n \\]
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>5. Найти радиус сходимости</h3>
+                <div class="math-text">
+                    \\[ \\sum_{n=1}^{\\infty}\\frac{x^n}{(n+1)!} \\]
+                    \\[ a_n=\\frac{x^n}{(n+1)!} \\]
+                    \\[ \\lim_{n\\to\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right| = \\lim_{n\\to\\infty}\\frac{|x|}{n+2}=0 \\]
+                    \\[ R=+\\infty \\]
+                </div>
+            </div>
+        `;
+
+        // Билет 15
+        const contentFor15 = `
+            <div class="math-section">
+                <h3>1. Ряды с знакопеременными членами. Признаки Лейбница, Дирихле и Абеля</h3>
+                <div class="math-text">
+                    Ряд вида
+                    \\[ \\sum_{n=1}^{\\infty}(-1)^{n-1}a_n,\\quad a_n\\ge 0, \\]
+                    называется знакопеременным рядом.<br>
+                    <strong>Признак Лейбница</strong><br>
+                    Если:
+                    \\[ a_n\\ge a_{n+1},\\quad \\lim_{n\\to\\infty}a_n=0, \\]
+                    то ряд
+                    \\[ \\sum_{n=1}^{\\infty}(-1)^{n-1}a_n \\]
+                    сходится.<br>
+                    <br>
+                    <strong>Признак Дирихле</strong><br>
+                    Если:
+                    <ul>
+                        <li>частичные суммы \\(\\sum_{k=1}^{n} a_k\\) ограничены;</li>
+                        <li>\\(b_n\\) монотонна и \\(b_n\\to 0\\),</li>
+                    </ul>
+                    то ряд
+                    \\[ \\sum_{n=1}^{\\infty} a_n b_n \\]
+                    сходится.<br>
+                    <br>
+                    <strong>Признак Абеля</strong><br>
+                    Если:
+                    <ul>
+                        <li>ряд \\(\\sum a_n\\) сходится;</li>
+                        <li>\\(b_n\\) монотонна и ограничена,</li>
+                    </ul>
+                    то ряд
+                    \\[ \\sum_{n=1}^{\\infty} a_n b_n \\]
+                    сходится.
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>2. Частные производные функций многих переменных</h3>
+                <div class="math-text">
+                    Пусть функция \\(f(x_1,x_2,\\dots,x_n)\\) определена в окрестности точки
+                    \\(x_0=(x_1^0,x_2^0,\\dots,x_n^0)\\).<br>
+                    Частной производной функции \\(f\\) по переменной \\(x_i\\) в точке \\(x_0\\) называется предел
+                    \\[ \\frac{\\partial f}{\\partial x_i}(x_0) = \\lim_{h\\to 0} \\frac{f(x_1^0,\\dots,x_i^0+h,\\dots,x_n^0)-f(x_0)}{h}, \\]
+                    если он существует.
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>3. Вычислить интеграл</h3>
+                <div class="math-text">
+                    \\[ \\int_{-\\infty}^{+\\infty}\\frac{dx}{x^2+2x+2} \\]
+                    \\[ x^2+2x+2=(x+1)^2+1 \\]
+                    \\[ \\int_{-\\infty}^{+\\infty}\\frac{dx}{(x+1)^2+1} = \\arctan(x+1)\\Big|_{-\\infty}^{+\\infty} \\]
+                    \\[ = \\frac{\\pi}{2}-\\left(-\\frac{\\pi}{2}\\right) = \\pi \\]
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>4. Разложить в ряд</h3>
+                <div class="math-text">
+                    \\[ f(x,y)=\\frac{1}{\\sqrt{x-y}},\\quad x_0=1,\\ y_0=0 \\]
+                    \\[ x-y=1+(x-1)-y \\]
+                    \\[ \\frac{1}{\\sqrt{x-y}}=(1+t)^{-1/2},\\quad t=(x-1)-y \\]
+                    \\[ (1+t)^{-1/2} = \\sum_{n=0}^{\\infty} \\binom{-1/2}{n}t^n \\]
+                    \\[ = 1-\\frac{1}{2}t+\\frac{3}{8}t^2-\\frac{5}{16}t^3+\\dots \\]
+                    \\[ = 1-\\frac{1}{2}\\big((x-1)-y\\big) +\\frac{3}{8}\\big((x-1)-y\\big)^2 -\\frac{5}{16}\\big((x-1)-y\\big)^3+\\dots \\]
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>5. Найти радиус сходимости</h3>
+                <div class="math-text">
+                    \\[ \\sum_{n=1}^{\\infty}(n-1)2^{\\,n-1}x^{\\,n-1} \\]
+                    \\[ a_n=(n-1)2^{n-1}x^{n-1} \\]
+                    \\[ \\lim_{n\\to\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right| = \\lim_{n\\to\\infty}|x|\\frac{n\\,2^{n}}{(n-1)2^{n-1}} = 2|x| \\]
+                    \\[ 2|x|<1 \\Rightarrow |x|<\\frac12 \\]
+                    \\[ R=\\frac12 \\]
+                </div>
+            </div>
+        `;
+
+        // Билет 16
+        const contentFor16 = `
+            <div class="math-section">
+                <h3>1. Непрерывность функций многих переменных. Свойства</h3>
+                <div class="math-text">
+                    Пусть \\( f:D\\subset\\mathbb{R}^n\\to\\mathbb{R} \\).<br>
+                    Функция \\( f(x) \\) называется непрерывной в точке \\( x_0\\in D \\), если
+                    \\[ \\lim_{x\\to x_0}f(x)=f(x_0). \\]
+                    Функция называется непрерывной на множестве \\( D \\), если она непрерывна в каждой точке множества \\( D \\).<br>
+                    <br>
+                    <strong>Свойства непрерывных функций</strong><br>
+                    Если функции \\( f(x), g(x) \\) непрерывны в точке \\( x_0 \\), то:
+                    <ul>
+                        <li>\\( f(x)\\pm g(x),\\quad f(x)\\cdot g(x) \\) непрерывны в точке \\( x_0 \\);</li>
+                        <li>\\( \\frac{f(x)}{g(x)} \\) непрерывна в точке \\( x_0 \\), если \\( g(x_0)\\ne 0 \\).</li>
+                    </ul>
+                    Если функция \\( f(x) \\) непрерывна в точке \\( x_0 \\), а функция \\( \\varphi(t) \\) непрерывна в точке \\( t_0=f(x_0) \\), то композиция \\( \\varphi(f(x)) \\) непрерывна в точке \\( x_0 \\).
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>2. Функциональная последовательность и сходимость функциональных рядов</h3>
+                <div class="math-text">
+                    Последовательность функций \\( \\{u_n(x)\\},\\quad x\\in E \\) называется функциональной последовательностью.<br>
+                    Последовательность \\( \\{u_n(x)\\} \\) называется сходящейся к функции \\( u(x) \\) в точке \\( x\\in E \\), если
+                    \\[ \\lim_{n\\to\\infty}u_n(x)=u(x). \\]
+                    <br>
+                    <strong>Функциональный ряд</strong><br>
+                    Ряд \\[ \\sum_{n=1}^{\\infty}u_n(x) \\] называется функциональным рядом.<br>
+                    Ряд называется сходящимся в точке \\( x \\), если сходится числовой ряд \\( \\sum_{n=1}^{\\infty}u_n(x) \\).<br>
+                    <br>
+                    <strong>Равномерная сходимость</strong><br>
+                    Ряд называется равномерно сходящимся на \\( E \\), если
+                    \\[ \\sup_{x\\in E}\\left|S_n(x)-S(x)\\right|\\xrightarrow[n\\to\\infty]{}0. \\]
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>3. Вычислить интеграл</h3>
+                <div class="math-text">
+                    \\[ \\int e^{3x}\\,dx \\]
+                    \\[ \\int e^{ax}\\,dx=\\frac{1}{a}e^{ax} \\]
+                    \\[ \\int e^{3x}\\,dx=\\frac{1}{3}e^{3x}+C \\]
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>4. Разложить в ряд Маклорена</h3>
+                <div class="math-text">
+                    \\[ f(x,y)=\\sqrt{\\frac{x}{y}},\\quad x_0=1,\\ y_0=1 \\]
+                    \\[ \\frac{x}{y}=1+(x-1)-(y-1)+o \\]
+                    \\[ \\sqrt{\\frac{x}{y}}=(1+t)^{1/2},\\quad t=(x-1)-(y-1) \\]
+                    \\[ (1+t)^{1/2} = \\sum_{n=0}^{\\infty}\\binom{1/2}{n}t^n \\]
+                    \\[ = 1+\\frac12 t-\\frac18 t^2+\\frac1{16}t^3-\\dots \\]
+                    \\[ = 1+\\frac12\\big((x-1)-(y-1)\\big) -\\frac18\\big((x-1)-(y-1)\\big)^2 +\\dots \\]
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>5. Найти радиус сходимости</h3>
+                <div class="math-text">
+                    \\[ \\sum_{n=1}^{\\infty}(-1)^{n+1}\\frac{x^{2n}}{(2n-1)(3n+1)!} \\]
+                    \\[ a_n=\\frac{x^{2n}}{(2n-1)(3n+1)!} \\]
+                    \\[ \\lim_{n\\to\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right| = \\lim_{n\\to\\infty} x^2\\frac{(2n-1)(3n+1)!}{(2n+1)(3n+4)!} \\]
+                    \\[ = \\lim_{n\\to\\infty} \\frac{x^2}{(3n+4)(3n+3)(3n+2)}=0 \\]
+                    \\[ R=+\\infty \\]
+                </div>
+            </div>
+        `;
+
+        // Билет 22
+        const contentFor22 = `
+            <div class="math-section">
+                <h3>1. Предел последовательности в пространстве \\(\\mathbb{R}^n\\)</h3>
+                <div class="math-text">
+                    Пусть \\[ x^{(k)}=(x_1^{(k)},x_2^{(k)},\\dots,x_n^{(k)})\\in\\mathbb{R}^n. \\]
+                    Последовательность \\(\\{x^{(k)}\\}\\) называется сходящейся к точке
+                    \\(a=(a_1,a_2,\\dots,a_n)\\), если
+                    \\[ \\forall\\varepsilon>0\\ \\exists N:\\ \\forall k>N \\quad \\rho(x^{(k)},a)<\\varepsilon, \\]
+                    где
+                    \\[ \\rho(x,y)=\\sqrt{\\sum_{i=1}^{n}(x_i-y_i)^2}. \\]
+                    <strong>Обозначение:</strong>
+                    \\[ \\lim_{k\\to\\infty} x^{(k)}=a. \\]
+                    Последовательность сходится в \\(\\mathbb{R}^n\\) тогда и только тогда, когда
+                    \\[ \\lim_{k\\to\\infty} x_i^{(k)}=a_i,\\quad i=1,\\dots,n. \\]
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>2. Экстремум функции многих переменных. Необходимые и достаточные условия</h3>
+                <div class="math-text">
+                    Пусть функция \\(f(x)\\) определена в окрестности точки \\(x_0\\).<br>
+                    Точка \\(x_0\\) называется точкой локального экстремума, если существует окрестность \\(U(x_0)\\), такая что
+                    \\[ f(x)\\le f(x_0)\\quad (\\text{или } f(x)\\ge f(x_0)) \\quad \\forall x\\in U(x_0). \\]
+                    <strong>Необходимое условие экстремума</strong><br>
+                    Если функция \\(f(x)\\) имеет экстремум в точке \\(x_0\\) и дифференцируема в этой точке, то
+                    \\[ \\nabla f(x_0)=0. \\]
+                    <strong>Достаточное условие экстремума</strong><br>
+                    Пусть \\( \\nabla f(x_0)=0, \\) и матрица вторых производных (матрица Гессе) в точке \\(x_0\\) положительно определена, то в точке \\(x_0\\) достигаетcя минимум.<br>
+                    Если матрица Гессе отрицательно определена — максимум.
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>3. Вычислить интеграл</h3>
+                <div class="math-text">
+                    \\[ \\int_{0}^{1}\\frac{1}{x^3}\\,dx \\]
+                    \\[ \\int x^{-3}dx=\\frac{x^{-2}}{-2} \\]
+                    \\[ =\\left.-\\frac{1}{2}x^{-2}\\right|_{0}^{1} \\]
+                    \\[ =\\lim_{\\varepsilon\\to 0+} \\left( -\\frac{1}{2} +\\frac{1}{2}\\varepsilon^{-2} \\right) =+\\infty \\]
+                    \\[ \\boxed{\\text{Интеграл расходится}} \\]
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>4. Разложить в ряд Маклорена</h3>
+                <div class="math-text">
+                    \\[ f(x,y)=\\ln(1+x+y) \\]
+                    \\[ \\ln(1+t)=\\sum_{n=1}^{\\infty}(-1)^{n-1}\\frac{t^n}{n},\\quad |t|<1 \\]
+                    Пусть \\( t=x+y \\):
+                    \\[ \\ln(1+x+y)=\\sum_{n=1}^{\\infty}(-1)^{n-1}\\frac{(x+y)^n}{n} \\]
+                    \\[ = (x+y)-\\frac{(x+y)^2}{2}+\\frac{(x+y)^3}{3}-\\dots \\]
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>5. Найти радиус сходимости</h3>
+                <div class="math-text">
+                    \\[ \\sum_{n=1}^{\\infty}\\frac{n-1}{3^{n-1}}x^{\\,n-1} \\]
+                    \\[ a_n=\\frac{n-1}{3^{n-1}}x^{n-1} \\]
+                    \\[ \\lim_{n\\to\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right| = \\lim_{n\\to\\infty}|x|\\frac{n}{3(n-1)} =\\frac{|x|}{3} \\]
+                    \\[ \\frac{|x|}{3}<1 \\Rightarrow |x|<3 \\]
+                    \\[ R=3 \\]
+                </div>
+            </div>
+        `;
+
+        // Билет 23
+        const contentFor23 = `
+            <div class="math-section">
+                <h3>1. Функциональные ряды и их сходимость</h3>
+                <div class="math-text">
+                    Пусть \\(\\{u_n(x)\\}\\) — последовательность функций, определённых на множестве \\(E\\).<br>
+                    Ряд
+                    \\[ \\sum_{n=1}^{\\infty} u_n(x) \\]
+                    называется функциональным рядом.<br>
+                    Функциональный ряд называется сходящимся в точке \\(x\\in E\\), если сходится числовой ряд
+                    \\[ \\sum_{n=1}^{\\infty} u_n(x). \\]
+                    Если ряд сходится в каждой точке множества \\(E\\), то он называется сходящимся на множестве \\(E\\).<br>
+                    <br>
+                    <strong>Равномерная сходимость</strong><br>
+                    Функциональный ряд \\(\\sum u_n(x)\\) называется равномерно сходящимся на \\(E\\), если
+                    \\[ \\sup_{x\\in E}\\left| \\sum_{k=1}^{n}u_k(x)-S(x)\\right|\\xrightarrow[n\\to\\infty]{}0, \\]
+                    где \\(S(x)\\) — сумма ряда.<br>
+                    <br>
+                    <strong>Признак Вейерштрасса</strong><br>
+                    Если существует последовательность чисел \\(\\{M_n\\}\\), такая что
+                    \\[ |u_n(x)|\\le M_n \\quad \\forall x\\in E, \\]
+                    и числовой ряд
+                    \\[ \\sum_{n=1}^{\\infty} M_n \\]
+                    сходится, то функциональный ряд
+                    \\[ \\sum_{n=1}^{\\infty} u_n(x) \\]
+                    сходится равномерно на \\(E\\).
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>2. Равномерная непрерывность функций многих переменных. Теорема Кантора</h3>
+                <div class="math-text">
+                    Функция \\(f:D\\subset\\mathbb{R}^n\\to\\mathbb{R}\\) называется равномерно непрерывной на множестве \\(D\\), если
+                    \\[ \\forall\\varepsilon>0\\ \\exists\\delta>0:\\ \\forall x,y\\in D,\\ \\rho(x,y)<\\delta \\Rightarrow |f(x)-f(y)|<\\varepsilon. \\]
+                    <strong>Теорема Кантора</strong><br>
+                    Если функция \\(f(x)\\) непрерывна на компакте \\(K\\subset\\mathbb{R}^n\\), то она равномерно непрерывна на \\(K\\).
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>3. Вычислить интеграл</h3>
+                <div class="math-text">
+                    \\[ \\int_{-1}^{1}\\frac{dx}{\\sqrt[3]{x^5}} \\]
+                    \\[ \\sqrt[3]{x^5}=x^{5/3} \\]
+                    \\[ \\int_{-1}^{1} x^{-5/3}\\,dx = \\lim_{\\varepsilon\\to 0+} \\left( \\int_{-1}^{-\\varepsilon} x^{-5/3}\\,dx + \\int_{\\varepsilon}^{1} x^{-5/3}\\,dx \\right) \\]
+                    \\[ = \\lim_{\\varepsilon\\to 0+} \\left( -\\frac{3}{2}\\varepsilon^{-2/3} +\\frac{3}{2} -\\frac{3}{2} +\\frac{3}{2}\\varepsilon^{-2/3} \\right) \\]
+                    \\[ =+\\infty \\]
+                    \\[ \\boxed{\\text{Интеграл расходится}} \\]
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>4. Разложить в ряд Маклорена</h3>
+                <div class="math-text">
+                    \\[ f(x,y)=(1+x)^2(1+y)^2 \\]
+                    \\[ (1+x)^2=1+2x+x^2 \\]
+                    \\[ (1+y)^2=1+2y+y^2 \\]
+                    \\[ f(x,y)=(1+2x+x^2)(1+2y+y^2) \\]
+                    \\[ =1+2y+y^2+2x+4xy+2xy^2+x^2+2x^2y+x^2y^2 \\]
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>5. Найти радиус сходимости</h3>
+                <div class="math-text">
+                    \\[ \\sum_{n=1}^{\\infty}\\frac{x^{2n-2}}{2^{\\,n-1}} \\]
+                    \\[ a_n=\\frac{x^{2n-2}}{2^{n-1}} \\]
+                    \\[ \\lim_{n\\to\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right| = \\lim_{n\\to\\infty}\\frac{x^2}{2} \\]
+                    \\[ \\frac{x^2}{2}<1 \\]
+                    \\[ |x|<\\sqrt2 \\]
+                    \\[ R=\\sqrt2 \\]
+                </div>
+            </div>
+        `;
+
+        // Билет 25
+        const contentFor25 = `
+            <div class="math-section">
+                <h3>1. Числовые ряды и их сходимость</h3>
+                <div class="math-text">
+                    Пусть дана последовательность \\(\\{a_n\\}\\).<br>
+                    Ряд
+                    \\[ \\sum_{n=1}^{\\infty} a_n \\]
+                    называется числовым рядом.<br>
+                    Частичной суммой ряда называется
+                    \\[ S_n=\\sum_{k=1}^{n} a_k. \\]
+                    Если существует конечный предел
+                    \\[ \\lim_{n\\to\\infty} S_n=S, \\]
+                    то ряд называется сходящимся, а число \\(S\\) — суммой ряда.<br>
+                    Если предел не существует или бесконечен — ряд расходится.<br>
+                    <br>
+                    <strong>Признаки сходимости</strong><br>
+                    <strong>Необходимое условие:</strong>
+                    \\[ \\lim_{n\\to\\infty} a_n=0. \\]
+                    <strong>Признак сравнения.</strong><br>
+                    Если \\(0\\le a_n\\le b_n\\) и \\(\\sum b_n\\) сходится, то \\(\\sum a_n\\) сходится.<br>
+                    <strong>Предельный признак сравнения.</strong><br>
+                    Если
+                    \\[ \\lim_{n\\to\\infty}\\frac{a_n}{b_n}=c,\\quad 0<c<\\infty, \\]
+                    то ряды сходятся или расходятся одновременно.<br>
+                    <strong>Признак Даламбера.</strong>
+                    \\[ \\lim_{n\\to\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|=q \\]
+                    \\[ \\begin{cases} q<1 & \\text{ряд сходится},\\\\ q>1 & \\text{ряд расходится}. \\end{cases} \\]
+                    <strong>Признак Коши.</strong>
+                    \\[ \\lim_{n\\to\\infty}\\sqrt[n]{|a_n|}=q \\]
+                    \\[ \\begin{cases} q<1 & \\text{ряд сходится},\\\\ q>1 & \\text{ряд расходится}. \\end{cases} \\]
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>2. Равномерная непрерывность функций многих переменных. Теорема Кантора</h3>
+                <div class="math-text">
+                    Функция \\(f:D\\subset\\mathbb{R}^n\\to\\mathbb{R}\\) называется
+                    равномерно непрерывной на \\(D\\), если
+                    \\[ \\forall\\varepsilon>0\\ \\exists\\delta>0:\\ \\forall x,y\\in D,\\ \\rho(x,y)<\\delta \\Rightarrow |f(x)-f(y)|<\\varepsilon. \\]
+                    <strong>Теорема Кантора</strong><br>
+                    Если функция \\(f(x)\\) непрерывна на компакте \\(K\\subset\\mathbb{R}^n\\), то она равномерно непрерывна на \\(K\\).
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>3. Вычислить интеграл</h3>
+                <div class="math-text">
+                    \\[ \\int_{0}^{1}\\frac{3e^{1/x}}{x^2}\\,dx \\]
+                    \\[ t=\\frac{1}{x},\\quad dt=-\\frac{1}{x^2}dx \\]
+                    \\[ = -3\\int_{+\\infty}^{1} e^{t}\\,dt = 3\\int_{1}^{+\\infty} e^{t}\\,dt \\]
+                    \\[ = 3\\left.e^{t}\\right|_{1}^{+\\infty} = +\\infty \\]
+                    \\[ \\boxed{\\text{Интеграл расходится}} \\]
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>4. Разложить в ряд Тейлора</h3>
+                <div class="math-text">
+                    \\[ f(x,y)=\\frac{x}{y},\\quad (x_0,y_0)=(1,1) \\]
+                    \\[ x=1+(x-1),\\quad y=1+(y-1) \\]
+                    \\[ \\frac{x}{y}=(1+(x-1))(1+(y-1))^{-1} \\]
+                    \\[ (1+t)^{-1}=\\sum_{n=0}^{\\infty}(-1)^n t^n \\]
+                    \\[ = \\left(1+(x-1)\\right) \\sum_{n=0}^{\\infty}(-1)^n (y-1)^n \\]
+                    \\[ = \\sum_{n=0}^{\\infty}(-1)^n (y-1)^n + \\sum_{n=0}^{\\infty}(-1)^n (x-1)(y-1)^n \\]
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>5. Найти радиус сходимости</h3>
+                <div class="math-text">
+                    \\[ \\sum_{n=1}^{\\infty}\\frac{x^{2n}}{(2n-1)\\,30^{\\,n-1}} \\]
+                    \\[ a_n=\\frac{x^{2n}}{(2n-1)\\,30^{n-1}} \\]
+                    \\[ \\lim_{n\\to\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right| = \\lim_{n\\to\\infty} x^2\\frac{(2n-1)30^{n-1}}{(2n+1)30^{n}} = \\frac{x^2}{30} \\]
+                    \\[ \\frac{x^2}{30}<1 \\Rightarrow |x|<\\sqrt{30} \\]
+                    \\[ R=\\sqrt{30} \\]
+                </div>
+            </div>
+        `;
+
+        // Билет 17
+        const contentFor17 = `
+            <div class="math-section">
+                <h3>1. Пространство \\(\\mathbb{R}^n\\) и основные множества</h3>
+                <div class="math-text">
+                    Пространством \\(\\mathbb{R}^n\\) называется множество всех упорядоченных наборов
+                    \\[ x=(x_1,x_2,\\dots,x_n),\\quad x_i\\in\\mathbb{R}. \\]
+                    Расстояние между точками \\(x,y\\in\\mathbb{R}^n\\) определяется формулой
+                    \\[ \\rho(x,y)=\\sqrt{\\sum_{i=1}^{n}(x_i-y_i)^2}. \\]
+                    Множество \\(G\\subset\\mathbb{R}^n\\) называется <strong>открытым</strong>, если для любой точки \\(x\\in G\\) существует \\(\\varepsilon>0\\), такое что \\(B_\\varepsilon(x)\\subset G\\).<br>
+                    Множество \\(F\\subset\\mathbb{R}^n\\) называется <strong>замкнутым</strong>, если оно содержит все свои предельные точки.<br>
+                    Множество называется <strong>ограниченным</strong>, если существует число \\(R>0\\), такое что \\(A\\subset B_R(0)\\).<br>
+                    Множество называется <strong>компактом</strong>, если оно замкнуто и ограничено.
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>2. Экстремум функции многих переменных. Необходимые и достаточные условия</h3>
+                <div class="math-text">
+                    Точка \\(x_0\\) называется точкой локального экстремума функции \\(f(x)\\), если существует окрестность \\(U(x_0)\\), такая что
+                    \\[ f(x)\\le f(x_0)\\quad \\text{или}\\quad f(x)\\ge f(x_0) \\quad \\forall x\\in U(x_0). \\]
+                    <strong>Необходимое условие экстремума:</strong><br>
+                    если функция \\(f(x)\\) дифференцируема в точке \\(x_0\\), то
+                    \\[ \\nabla f(x_0)=0. \\]
+                    <strong>Достаточное условие экстремума:</strong><br>
+                    если \\(\\nabla f(x_0)=0\\) и матрица Гессе в точке \\(x_0\\):
+                    <ul>
+                        <li>положительно определена — минимум;</li>
+                        <li>отрицательно определена — максимум;</li>
+                        <li>знак не определён — экстремума нет.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>3. Вычислить интеграл</h3>
+                <div class="math-text">
+                    \\[ \\int_{2}^{+\\infty}\\frac{\\ln x}{x}\\,dx \\]
+                    \\[ t=\\ln x,\\quad dt=\\frac{dx}{x} \\]
+                    \\[ = \\int_{\\ln 2}^{+\\infty} t\\,dt = \\frac{t^2}{2}\\Big|_{\\ln 2}^{+\\infty} \\]
+                    \\[ = +\\infty \\]
+                    \\[ \\boxed{\\text{Интеграл расходится}} \\]
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>4. Разложить в ряд Тейлора</h3>
+                <div class="math-text">
+                    \\[ f(x,y)=\\sqrt{\\frac{x}{y}},\\quad (x_0,y_0)=(1,1) \\]
+                    \\[ \\frac{x}{y}=1+(x-1)-(y-1) \\]
+                    \\[ \\sqrt{\\frac{x}{y}}=(1+t)^{1/2},\\quad t=(x-1)-(y-1) \\]
+                    \\[ (1+t)^{1/2} = \\sum_{n=0}^{\\infty}\\binom{1/2}{n}t^n \\]
+                    \\[ = 1+\\frac12 t-\\frac18 t^2+\\frac1{16}t^3-\\dots \\]
+                    \\[ = 1+\\frac12\\big((x-1)-(y-1)\\big) -\\frac18\\big((x-1)-(y-1)\\big)^2 +\\frac1{16}\\big((x-1)-(y-1)\\big)^3+\\dots \\]
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>5. Найти радиус сходимости</h3>
+                <div class="math-text">
+                    \\[ \\sum_{n=1}^{\\infty}\\frac{n!}{2n-1}\\,x^{n} \\]
+                    \\[ a_n=\\frac{n!}{2n-1}x^n \\]
+                    \\[ \\left|\\frac{a_{n+1}}{a_n}\\right| = |x|\\frac{(n+1)!}{2n+1}\\cdot\\frac{2n-1}{n!} \\]
+                    \\[ = |x|(n+1)\\frac{2n-1}{2n+1} \\]
+                    \\[ \\lim_{n\\to\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right| = +\\infty \\quad \\forall x\\ne 0 \\]
+                    \\[ R=0 \\]
+                </div>
+            </div>
+        `;
+
+        // Билет 20
+        const contentFor20 = `
+            <div class="math-section">
+                <h3>1. Непрерывность функций многих переменных. Свойства</h3>
+                <div class="math-text">
+                    Пусть \\( f:D\\subset\\mathbb{R}^n\\to\\mathbb{R} \\).<br>
+                    Функция \\( f \\) называется непрерывной в точке \\( x_0\\in D \\), если
+                    \\[ \\lim_{x\\to x_0}f(x)=f(x_0). \\]
+                    Функция называется непрерывной на множестве \\( D \\), если она непрерывна в каждой точке множества \\( D \\).<br>
+                    <br>
+                    <strong>Свойства:</strong>
+                    Если \\( f,g \\) непрерывны в \\( x_0 \\), то \\( f\\pm g,\\ fg \\) непрерывны в \\( x_0 \\);
+                    \\( f/g \\) непрерывна, если \\( g(x_0)\\ne 0 \\).<br>
+                    Если \\( f \\) непрерывна в \\( x_0 \\) и \\( \\varphi \\) непрерывна в \\( f(x_0) \\), то \\( \\varphi\\circ f \\) непрерывна в \\( x_0 \\).
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>2. Функциональная последовательность и сходимость функциональных рядов</h3>
+                <div class="math-text">
+                    Последовательность функций \\( \\{u_n(x)\\} \\) называется функциональной последовательностью.<br>
+                    \\( u_n(x)\\to u(x) \\) в точке \\( x \\), если \\( \\lim_{n\\to\\infty}u_n(x)=u(x) \\).<br>
+                    Ряд \\( \\sum u_n(x) \\) называется функциональным рядом.<br>
+                    Ряд называется <strong>равномерно сходящимся</strong> на \\( E \\), если
+                    \\[ \\sup_{x\\in E}|S_n(x)-S(x)|\\xrightarrow[n\\to\\infty]{}0. \\]
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>3. Вычислить интеграл</h3>
+                <div class="math-text">
+                    \\[ \\int_{0}^{+\\infty}\\ln(x^2+1)\\,dx \\]
+                    \\[ \\int\\ln(x^2+1)\\,dx = x\\ln(x^2+1)-2x+2\\arctan x \\]
+                    \\[ =\\left[x\\ln(x^2+1)-2x+2\\arctan x\\right]_{0}^{+\\infty} \\]
+                    \\[ = +\\infty \\]
+                    \\[ \\boxed{\\text{Интеграл расходится}} \\]
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>4. Найти экстремум функции</h3>
+                <div class="math-text">
+                    \\[ z=xy(a-x-y) \\]
+                    \\[ z_x=y(a-2x-y),\\quad z_y=x(a-x-2y) \\]
+                    Система \\( y(a-2x-y)=0,\\ x(a-x-2y)=0 \\) дает стационарную точку \\( M(a/3, a/3) \\).<br>
+                    Вторые производные:
+                    \\[ z_{xx}=-2y,\\ z_{yy}=-2x,\\ z_{xy}=a-2x-2y \\]
+                    В точке \\( M \\):
+                    \\[ z_{xx}=-2a/3,\\ z_{yy}=-2a/3,\\ z_{xy}=-a/3 \\]
+                    \\[ D=z_{xx}z_{yy}-z_{xy}^2 = \\frac{4a^2}{9}-\\frac{a^2}{9}=\\frac{a^2}{3} > 0 \\]
+                    Так как \\( z_{xx}<0 \\) (при \\( a>0 \\)), то это максимум.
+                    \\[ z_{\\max}=\\frac{a^3}{27} \\]
+                </div>
+            </div>
+
+            <div class="math-section">
+                <h3>5. Найти радиус сходимости</h3>
+                <div class="math-text">
+                    \\[ \\sum_{n=1}^{\\infty}(-1)^{n+1}\\frac{x^n}{3^n} \\]
+                    \\[ a_n=\\frac{x^n}{3^n} \\]
+                    \\[ \\lim_{n\\to\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{|x|}{3} \\]
+                    \\[ \\frac{|x|}{3}<1 \\implies |x|<3 \\]
+                    \\[ R=3 \\]
+                </div>
+            </div>
+        `;
+
         numbers.forEach(num => {
             const button = document.createElement('button');
             button.className = 'number-btn';
             button.textContent = num;
 
             button.onclick = () => {
-                if (num === 2) {
-                    // Если нажали 2 - открываем модальное окно с математикой
-                    mathContent.innerHTML = contentFor2;
+                let content = null;
+                if (num === 2) content = contentFor2;
+                else if (num === 22) content = contentFor22;
+                else if (num === 23) content = contentFor23;
+                else if (num === 11) content = contentFor11;
+                else if (num === 15) content = contentFor15;
+                else if (num === 16) content = contentFor16;
+                else if (num === 14) content = contentFor14;
+                else if (num === 25) content = contentFor25;
+                else if (num === 17) content = contentFor17;
+                else if (num === 20) content = contentFor20;
+
+                if (content) {
+                    mathContent.innerHTML = content;
                     modal.style.display = 'flex';
-                    // Просим MathJax перерисовать формулы
                     if (window.MathJax) {
                         MathJax.typesetPromise();
                     }
-                    messageBox.textContent = "Открыта теория";
+                    messageBox.textContent = `Открыта теория (Билет ${num})`;
                 } else {
-                    // Стандартное поведение для остальных кнопок
                     messageBox.textContent = `Вы выбрали число: ${num}`;
                     messageBox.style.color = 'white';
                     setTimeout(() => {
